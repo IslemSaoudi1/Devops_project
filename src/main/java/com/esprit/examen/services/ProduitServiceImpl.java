@@ -50,7 +50,8 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public Produit updateProduit(Produit p) {
-		return produitRepository.save(p);
+		 produitRepository.save(p);
+		 return p ;
 	}
 
 	@Override

@@ -101,20 +101,19 @@ assertTrue(actualMessage.contains(expectedMessage));
 }
 }
 
-//@Test
-//public void EditProduit_ifFound() {
-//	Produit p_edit = new Produit();
-//	p_edit.setIdProduit(3L);
-//	p_edit.setLibelleProduit("javel edit");
+@Test
+public void EditProduit_ifFound() {
+	Produit p_edit = new Produit();
+p_edit.setIdProduit(3L);
+	p_edit.setLibelleProduit("javel edit");
+	Produit new_p_edit = new Produit();
+new_p_edit.setLibelleProduit("new javel edit");
 
-//	Produit new_p_edit = new Produit();
-//new_p_edit.setLibelleProduit("new javel edit");
+when(or.findById(p_edit.getIdProduit())).thenReturn(Optional.of(p_edit));
+p_edit = osI.updateProduit(new_p_edit);
 
-//when(or.findById(p_edit.getIdProduit())).thenReturn(Optional.of(p_edit));
-//p_edit = osI.updateProduit(new_p_edit);
-
-//verify(or).save(p_edit);
-//}
+verify(or).save(p_edit);
+}
 
 @Test
 public void EditException_ifnotFound() {
