@@ -26,7 +26,7 @@ import com.esprit.examen.services.ProduitServiceImpl;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-class Test_Class{
+class TestProduitMock{
 
 @Mock
 ProduitRepository or;

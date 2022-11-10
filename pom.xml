@@ -128,7 +128,7 @@
 				<version>2.22.2</version>
 				<configuration>
 					<includes>
-						<include>Test_Class.java</include>
+						<include>TestProduitMock.java</include>
 					</includes>
 				</configuration>
 			</plugin>
