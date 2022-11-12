@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+package com.esprit.examen.service;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
