@@ -26,14 +26,14 @@ import com.esprit.examen.services.OperateurServiceImpl;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-class TestOperateurServiceMock {
+class OperateurServiceImplTest {
 
 	@Mock
 	OperateurRepository or;
 	@InjectMocks
 	OperateurServiceImpl osI;
 
-	Operateur o = Operateur.builder().idOperateur((long) 7).nom("salma").prenom("belhadj ali").password("azerty").build();
+	Operateur o = Operateur.builder().idOperateur((long) 7).nom("BenSlimene").prenom("Narjess").password("azerty").build();
 
 	@Test
 	public void AddOperateur() {
