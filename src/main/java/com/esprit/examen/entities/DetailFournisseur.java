@@ -11,10 +11,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+@Builder
 @Entity
 @Getter
 @Setter
@@ -33,5 +34,12 @@ public class DetailFournisseur implements Serializable{
 	@OneToOne(mappedBy="detailFournisseur")
 	@JsonIgnore
 	private Fournisseur fournisseur;
+	public DetailFournisseur(Long idDetailFournisseur, String email, String adresse, String matricule) {
+		super();
+		this.idDetailFournisseur = idDetailFournisseur;
+		this.email = email;
+		this.adresse = adresse;
+		this.matricule = matricule;
+	}
 	
 }
