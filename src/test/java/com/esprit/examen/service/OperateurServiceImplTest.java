@@ -38,8 +38,8 @@ class OperateurServiceImplTest {
 	@Test
 	public void AddOperateur() {
 		Operateur o_add = new Operateur();
-		o_add.setNom("salma add");
-		o_add.setPrenom("belhadj ali add");
+		o_add.setNom("BenSlimene add");
+		o_add.setPrenom("Narjess add");
 		o_add.setPassword("password add");
 
 		Mockito.when(or.save(ArgumentMatchers.any(Operateur.class))).thenReturn(o_add);
