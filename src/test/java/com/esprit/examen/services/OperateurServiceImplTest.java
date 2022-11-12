@@ -65,7 +65,7 @@ class TestOperateurServiceMock {
 	public void RetrieveAll() {
 		List<Operateur> operateurs = new ArrayList<>();
 		operateurs.add(new Operateur());
-
+//kjkkkkk
 		when(or.findAll()).thenReturn(operateurs);
 
 		List<Operateur> expected = osI.retrieveAllOperateurs();
