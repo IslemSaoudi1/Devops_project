@@ -135,7 +135,7 @@
 				<version>2.22.2</version>
 				<configuration>
 					<includes>
-						<include>TestProduitMock.java</include>
+						<include>FournisseurTest.java</include>
 					</includes>
 				</configuration>
 			</plugin>
