@@ -1,0 +1,60 @@
+version: '3.9'
+
+services:
+  mysqldb:
+    container_name: mysql
+    image: mysql:8
+    volumes:
+      - mysqlvolume:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+volumes:
+  mysqlvolume:
+    external: true 
+  
+
+  
+
+
+## MARWEN DOCKER COMPOSE      
+# version: "3.9"
+# services:
+  jenkins:
+    image: "jenkinsci/blueocean"
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/jenkins/data:/var/jenkins_home
+  sonar:
+    image: "sonarqube"
+    restart: on-failure
+    ports:
+      - "9000:9000"
+    volumes:
+      - /home/sonarqube/data:/opt/sonarqube/data
+  nexus:
+    image: "sonatype/nexus3"
+    restart: always
+    ports:
+      - "8081:8081"
+      - "8082:8082"
+      - "8083:8083"
+    volumes:
+      - /home/nexus/nexus-data:/sonatype-work sonatype/nexus3
+#   mysqldb:
+#     image: mysql
+#     command: --default-authentication-plugin=mysql_native_password
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#     volumes:
+#       - mysql_home:/etc/mysql
+# volumes:
+#   jenkins_home:
+#     external: true
+#   mysql_home:
+#     external: true 
+  
+
