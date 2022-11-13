@@ -1,0 +1,65 @@
+pipeline {
+    agent {label "docker"}
+    stages {
+        stage('GIT') {
+            steps {
+                echo 'github';
+                git branch: 'Produit',
+                 url: 'https://github.com/IslemSaoudi1/Devops_project.git',
+                 credentialsId:'gitcredentials';
+            }
+        }
+      
+        stage('Maven Package') {
+            steps {
+                sh "chmod +x mvnw "
+                sh "./mvnw package -DskipTests=true"
+                
+            }
+        }
+           stage('Mvn clean') {
+            steps {
+                sh './mvnw clean'
+            }
+        }
+        stage('Mvn compile') {
+            steps {
+                sh './mvnw compile'
+            }
+        }
+        stage('Unit Tests and Jacoco') {
+            steps {
+	
+	            sh "./mvnw test"
+	            junit '**/target/surefire-reports/TEST-*.xml'
+		 jacoco execPattern: 'target/jacoco.exec'
+            }
+        }
+        stage('SonarQube') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+            }
+        }
+        stage('Nexus3'){
+            steps{
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'spring-boot-starter-parent', 
+                        classifier: '', 
+                        file: 'pom.xml', 
+                        type: 'pom'
+                    ]
+                ], 
+                credentialsId: 'nexus3', 
+                groupId: 'org.springframework.boot', 
+                nexusUrl: '192.168.1.10:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'http://192.168.1.10:8081/repository/maven-releases/', 
+                version: '1.0'
+                
+            }
+        }
+    }
+}
+
