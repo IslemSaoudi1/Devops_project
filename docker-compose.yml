@@ -15,7 +15,7 @@ services:
     restart: always
   backend:
     image: 192.168.1.10:8082/repository/islem/tpachat
-    container_name: tpachatApp
+    container_name: tpachatAppli
     restart: on-failure
     ports:
       - 8089:8089
