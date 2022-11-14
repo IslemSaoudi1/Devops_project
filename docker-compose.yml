@@ -16,7 +16,7 @@ services:
            retries: 10
     restart: always
   backend:
-    image: http://192.168.1.10:8082/repository/islem/tpachat
+    image: 192.168.1.10:8082/repository/islem/tpachat
     container_name: tpachatApp
     restart: on-failure
     ports:
