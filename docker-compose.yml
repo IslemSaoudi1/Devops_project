@@ -9,46 +9,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root1234
  
-
-  jenkins:
-    image: "jenkinsci/blueocean"
+  spring_app:
+    image: 192.168.100.6:8083/repository/narjess98/tpachat
+    container_name: tpachat
     restart: on-failure
     ports:
-      - "8080:8080"
-    volumes:
-      - /home/jenkins/data:/var/jenkins_home
-  sonar:
-    image: "sonarqube"
-    restart: on-failure
-    ports:
-      - "9000:9000"
-    volumes:
-      - /home/sonarqube/data:/opt/sonarqube/data
-  nexus:
-    image: "sonatype/nexus3"
-    restart: always
-    ports:
-      - "8081:8081"
-      - "8082:8082"
-      - "8083:8083"
-    volumes:
-      - /home/nexus/nexus-data:/sonatype-work sonatype/nexus3
-#   mysqldb:
-#     image: mysql
-#     command: --default-authentication-plugin=mysql_native_password
-#     restart: always
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#     volumes:
-#       - mysql_home:/etc/mysql
-# volumes:
-#   jenkins_home:
-#     external: true
-#   mysql_home:
-#     external: true 
-volumes:
-  mysqlvolume:
-    external: true 
- 
+      - 8089:8089
+    depends_on:
+      - mysql
+  
   
 
