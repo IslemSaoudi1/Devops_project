@@ -16,11 +16,14 @@ services:
            retries: 10
     restart: always
   backend:
-    image: 'islemsaoudi/devops_app:latest'
+    image: http://192.168.1.10:8081/repository/islem/tpachat
+    container_name: tpachatApp
+    restart: on-failure
     ports:
-           - "8089:8089"
-    links:
-           - "db"
+      - 8089:8089
     depends_on:
-           - "db"
-    restart: always
+      - mysqldb
+      
+volumes:
+  mysql_volume:
+    external: true
