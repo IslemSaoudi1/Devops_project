@@ -50,6 +50,7 @@ class OperateurServiceImplTest {
 		assertEquals(o_add.getPrenom(), o_added.getPrenom());
 		assertEquals(o_add.getPassword(), o_added.getPassword());
 		verify(or).save(o_add);
+		//
 	}
 
 	@Test
@@ -61,56 +62,18 @@ class OperateurServiceImplTest {
 		verify(or).findById(Mockito.anyLong());
 	}
 
-	@Test
-	public void RetrieveAll() {
-		List<Operateur> operateurs = new ArrayList<>();
-		operateurs.add(new Operateur());
-//kjkkkkk
-		when(or.findAll()).thenReturn(operateurs);
 
-		List<Operateur> expected = osI.retrieveAllOperateurs();
 
-		assertEquals(expected, operateurs);
-		verify(or).findAll();
-	}
-
-	@Test
-	public void DeleteOperateur_ifFound() {
-		Operateur o_delete = new Operateur();
-		o_delete.setNom("salma delete");
-		o_delete.setIdOperateur(1L);
-
-		when(or.findById(o_delete.getIdOperateur())).thenReturn(Optional.of(o_delete));
-
-		osI.deleteOperateur(o_delete.getIdOperateur());
-		verify(or).deleteById(o_delete.getIdOperateur());
-	}
-
-	@Test
-	public void DeleteException_ifnotFound() {
-		try {
-			Operateur o_delete = new Operateur();
-			o_delete.setIdOperateur(2L);
-			o_delete.setNom("salouma");
-
-			when(or.findById(anyLong())).thenReturn(Optional.ofNullable(null));
-			osI.deleteOperateur(o_delete.getIdOperateur());
-		} catch (Exception e) {
-			String expectedMessage = "entity with id";
-			String actualMessage = e.getMessage();
-
-			assertTrue(actualMessage.contains(expectedMessage));
-		}
-	}
+	
 
 	@Test
 	public void EditOperateur_ifFound() {
 		Operateur o_edit = new Operateur();
 		o_edit.setIdOperateur(3L);
-		o_edit.setNom("salma edit");
+		o_edit.setNom("Narjess edit");
 
 		Operateur new_o_edit = new Operateur();
-		new_o_edit.setNom("new salma edit");
+		new_o_edit.setNom("new Narjess edit");
 
 		when(or.findById(o_edit.getIdOperateur())).thenReturn(Optional.of(o_edit));
 		o_edit = osI.updateOperateur(new_o_edit);
