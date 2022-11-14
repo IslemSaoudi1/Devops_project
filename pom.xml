@@ -5,12 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
+		<artifactId>spring-boot-starter-parent</artifactId>	
 		<version>2.5.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpAchatProject</artifactId>
+	<packaging> jar</packaging>
 	<version>1.0</version>
 	<name>tpAchatProject</name>
 	<description>tpAchatProject</description>
@@ -21,7 +22,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus repository</name>
-			<url>http://192.168.100.6:8081/repository/maven-releases</url>
+			<url>http://192.168.100.6:8081/repository/narjess98</url>
 		</repository>
 	</distributionManagement>
 	<dependencies>
