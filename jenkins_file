@@ -10,13 +10,7 @@ pipeline {
             }
         }
       
-        stage('Maven Package') {
-            steps {
-                sh "chmod +x mvnw "
-                sh "./mvnw package -DskipTests=true"
-                
-            }
-        }
+       
            stage('Mvn clean') {
             steps {
                 sh './mvnw clean'
@@ -38,6 +32,13 @@ pipeline {
         stage('SonarQube') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+            }
+        }
+	 stage('Maven Package') {
+            steps {
+                sh "chmod +x mvnw "
+                sh "./mvnw package -DskipTests=true"
+                
             }
         }
         stage('Nexus3'){
