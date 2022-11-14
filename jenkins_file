@@ -21,19 +21,7 @@ pipeline {
                 sh './mvnw compile'
             }
         }
-        stage('Unit Tests and Jacoco') {
-            steps {
-	
-	            sh "./mvnw test"
-	            junit '**/target/surefire-reports/TEST-*.xml'
-		 jacoco execPattern: 'target/jacoco.exec'
-            }
-        }
-        stage('SonarQube') {
-            steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
-            }
-        }
+      
 	 stage('Maven Package') {
             steps {
                 sh "chmod +x mvnw "
