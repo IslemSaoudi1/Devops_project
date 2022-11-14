@@ -1,5 +1,4 @@
-version: '3.9'
-
+version: '3'
 services:
   mysqldb:
     container_name: mysql
@@ -9,17 +8,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root1234
-volumes:
-  mysqlvolume:
-    external: true 
-  
+ 
 
-  
-
-
-## MARWEN DOCKER COMPOSE      
-# version: "3.9"
-# services:
   jenkins:
     image: "jenkinsci/blueocean"
     restart: on-failure
@@ -56,5 +46,9 @@ volumes:
 #     external: true
 #   mysql_home:
 #     external: true 
+volumes:
+  mysqlvolume:
+    external: true 
+ 
   
 
